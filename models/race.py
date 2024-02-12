@@ -1,6 +1,5 @@
 import random
 
-
 class Race:
     name: str = None
     subraces: str = None

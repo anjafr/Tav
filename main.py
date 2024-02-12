@@ -15,7 +15,10 @@ def hello_http(request):
     """
     request_args = request.args
     tav_name = request_args.get("name", "Tav")
-    number_of_classes = int(request_args.get("num_max_classes", 12))
+    try:
+        number_of_classes = int(request_args.get("num_max_classes", 12))
+    except ValueError:
+        number_of_classes = 12
     tav = Tav(name=tav_name, num_max_classes=number_of_classes)
 
     while tav.character_level < 12:
