@@ -1,5 +1,6 @@
 import random
 
+
 class Race:
     name: str = None
     subraces: str = None
@@ -12,7 +13,21 @@ class Race:
         return f"{self.subrace}"
 
 
-dragonborn = Race("Dragonborn", ["Black Dragonborn", "Blue Dragonborn", "Brass Dragonborn", "Bronze Dragonborn", "Copper Dragonborn", "Gold Dragonborn", "Green Dragonborn", "Red Dragonborn", "Silver Dragonborn", "White Dragonborn"])
+dragonborn = Race(
+    "Dragonborn",
+    [
+        "Black Dragonborn",
+        "Blue Dragonborn",
+        "Brass Dragonborn",
+        "Bronze Dragonborn",
+        "Copper Dragonborn",
+        "Gold Dragonborn",
+        "Green Dragonborn",
+        "Red Dragonborn",
+        "Silver Dragonborn",
+        "White Dragonborn",
+    ],
+)
 drow = Race("Drow", ["Lolth-Sworn Drow", "Seldarine Drow"])
 dwarf = Race("Dwarf", ["Gold Dwarf", "Shield Dwarf", "Duergar"])
 elf = Race("Elf", ["High Elf", "Wood Elf"])
@@ -25,15 +40,4 @@ human = Race("Human", ["Human"])
 tiefling = Race("Tiefling", ["Asmodeus Tiefling", "Mephistopheles Tiefling", "Zariel Tiefling"])
 
 
-RACELIST = [
-    dragonborn,
-    drow,
-    dwarf,
-    githyanki,
-    gnome,
-    half_elf,
-    half_orc,
-    halfling,
-    human,
-    tiefling
-    ]
+RACELIST = [dragonborn, drow, dwarf, githyanki, gnome, half_elf, half_orc, halfling, human, tiefling]

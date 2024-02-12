@@ -1,57 +1,108 @@
 import random
 
-class Clazz:
+class BG3Class:
     name: str = None
-    level: int = 1
-    subclass_choice_level: int = None
+    level: int = 0
+    subclass_choice_level: int = 1
     subclasses: [str] = []
     subclass: str = None
-
-    def __init__(self, name, sc_level, sc_list):
-        self.name = name
-        self.subclass_choice_level = sc_level
-        self.subclasses = sc_list
-        if self.subclass_choice_level == 1: self.choose_subclass()
-
-    def __str__(self):
-        if self.subclass:
-            return f"Level {self.level} {self.name} - {self.subclass}"
-        return f"Level {self.level} {self.name}"
 
     def choose_subclass(self):
         self.subclass = random.choice(self.subclasses)
 
     def level_up(self):
         self.level += 1
-        if self.level == self.subclass_choice_level: self.choose_subclass()
+        if self.level == self.subclass_choice_level:
+            self.choose_subclass()
 
-    def to_json(self):
-        return {self.name: f"{self.level} - {self.subclass}"}
+    @property
+    def __dict__(self):
+        return {"name": self.name, "level": self.level, "subclass": self.subclass}
 
 
-barbarian = Clazz("Barbarian", 3, ["Berserker", "Wild Heart", "Wild Magic"])
-bard = Clazz("Bard", 3, ["College of Lore", "College of Valour", "College of Swords"])
-cleric = Clazz("Cleric", 1, ["Life Domain", "Light Domain", "Trickery Domain", "Knowledge Domain", "Nature Domain", "Tempest Domain", "War Domain"])
-druid = Clazz("Druid", 2, ["Circle of the Moon", "Circle of the Land", "Circle of the Spores"])
-fighter = Clazz("Fighter", 3, ["Battle Master", "Eldritch Knight", "Champion"])
-monk = Clazz("Monk", 3, ["Way of the Open Hand", "Way of Shadow", "Way of the Four Elements"])
-paladin = Clazz("Paladin", 1, ["Oath of Devotion", "Oath of the Ancients", "Oath of Vengeance"])
-ranger = Clazz("Ranger", 3, ["Beast Master", "Hunter", "Gloom Stalker"])
-rogue = Clazz("Rogue", 3, ["Thief", "Arcane Trickster", "Assassin"])
-sorcerer = Clazz("Sorcerer", 1, ["Draconic Bloodline", "Wild Magic", "Storm Sorcery"])
-warlock = Clazz("Warlock", 1, ["The Fiend", "The Great Old One", "Archfey"])
-wizard = Clazz("Wizard", 2, ["Abjuration School", "Conjuration School", "Divination School", "Enchantment School", "Evocation School", "Necromancy School", "Illusion School", "Transmutation School"])
+class Barbarian(BG3Class):
+    name = "Barbarian"
+    subclass_choice_level = 3
+    subclasses = ["Berserker", "Wild Heart", "Wild Magic"]
 
-CLASSLIST = [
-    barbarian,
-    bard,
-    cleric,
-    druid,
-    fighter,
-    monk,
-    paladin,
-    ranger,
-    rogue,
-    sorcerer,
-    warlock,
-    wizard]
+
+class Bard(BG3Class):
+    name = "Bard"
+    subclass_choice_level = 3
+    subclasses = ["College of Lore", "College of Valour", "College of Swords"]
+
+
+class Cleric(BG3Class):
+    name = "Cleric"
+    subclasses = [
+        "Life Domain",
+        "Light Domain",
+        "Trickery Domain",
+        "Knowledge Domain",
+        "Nature Domain",
+        "Tempest Domain",
+        "War Domain",
+    ]
+
+
+class Druid(BG3Class):
+    name = "Druid"
+    subclass_choice_level = 2
+    subclasses = ["Circle of the Moon", "Circle of the Land", "Circle of the Spores"]
+
+
+class Fighter(BG3Class):
+    name = "Fighter"
+    subclass_choice_level = 3
+    subclasses = ["Battle Master", "Eldritch Knight", "Champion"]
+
+
+class Monk(BG3Class):
+    name = "Monk"
+    subclass_choice_level = 3
+    subclasses = ["Way of the Open Hand", "Way of Shadow", "Way of the Four Elements"]
+
+
+class Paladin(BG3Class):
+    name = "Paladin"
+    subclasses = ["Oath of Devotion", "Oath of the Ancients", "Oath of Vengeance"]
+
+
+class Ranger(BG3Class):
+    name = "Ranger"
+    subclass_choice_level = 3
+    subclasses = ["Beast Master", "Hunter", "Gloom Stalker"]
+
+
+class Rogue(BG3Class):
+    name = "Rogue"
+    subclass_choice_level = 3
+    subclasses = ["Thief", "Arcane Trickster", "Assassin"]
+
+
+class Sorcerer(BG3Class):
+    name = "Sorcerer"
+    subclasses = ["Draconic Bloodline", "Wild Magic", "Storm Sorcery"]
+
+
+class Warlock(BG3Class):
+    name = "Warlock"
+    subclasses = ["The Fiend", "The Great Old One", "Archfey"]
+
+
+class Wizard(BG3Class):
+    name = "Wizard"
+    subclass_choice_level = 2
+    subclasses = [
+        "Abjuration School",
+        "Conjuration School",
+        "Divination School",
+        "Enchantment School",
+        "Evocation School",
+        "Necromancy School",
+        "Illusion School",
+        "Transmutation School",
+    ]
+
+
+CLASSLIST = [Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard]
