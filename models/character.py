@@ -61,14 +61,6 @@ class Tav:
                 class_weights[index] = 40 / (N - n)
         return random.choices(population=self.available_classes(), weights=class_weights, k=1)[0]
 
-    def level_up(self):
-        if self.character_level == 12:
-            print("this is max level you silly goose")
-            return
-
-        self.character_level += 1
-        self.level_up_class()
-
     def level_up_class(self):
         clazz = self.weighted_class_choice()
         if clazz.name not in self.classes.keys():
@@ -76,3 +68,12 @@ class Tav:
 
         self.classes[clazz.name].level_up()
         self.history.append(self.classes[clazz.name].__dict__)
+
+    def level_up(self):
+        if self.character_level == 12:
+            print("this is max level you silly goose")
+            return
+
+        self.character_level += 1
+        self.level_up_class()
+        

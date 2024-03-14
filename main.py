@@ -15,6 +15,8 @@ def hello_http(request):
     """
     request_args = request.args
     tav_name = request_args.get("name", "Tav")
+    if len(tav_name) > 25:
+        tav_name = "Ridiculously Long Name"
     try:
         number_of_classes = int(request_args.get("num_max_classes", 12))
     except ValueError:
